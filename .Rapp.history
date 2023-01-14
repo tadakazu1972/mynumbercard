@@ -1,0 +1,259 @@
+install.packages("dplyr")
+install.packages("ggplot2")
+install.packages("readr")
+install.packages("sf")
+install.packages("RColorBrewer")
+install.packages("classInt")
+install.packages("RMeCab")
+applyno <- 1:99999
+str(applyno)
+status  <- rep(c("申請受理","振込対応中","振込完了","不受理"), times=25000)
+str(status)
+applyno <- 1:100000
+str(applyno)
+date1   <- seq(as.Date("2020/05/01"), as.Date("2020/06/30"), "days")
+str(data1)
+str(date1)
+data1
+date1
+date 　 <- seq(as.Date("2020/05/01"), as.Date("2020/06/19"), "days")
+DATE
+date
+date1   <- rep(date, times=2000)
+str(date1)
+dateA 　<- seq(as.Date("2020/05/01"), as.Date("2020/06/19"), "days")#
+date1   <- rep(dateA, times=2000)
+dateB 　<- seq(as.Date("2020/07/01"), as.Date("2020/08/18"), "days")
+dateB
+dateB 　<- seq(as.Date("2020/07/01"), as.Date("2020/08/19"), "days")#
+date2   <- rep(dateB, times=2000)
+dateB
+str(data2)
+str(date2)
+data <- data.frame(ApplyNo=applyno, Status=status, ApplyDate=date1, PlanDate=date2)
+str(data)
+write.csv(data, "dummy.csv", fileEncoding="CP932", row.names=FALSE)
+ls()
+load(".RData")
+ls()
+getwd()
+library(dplyr)
+library(sf)
+library(readr)
+library(RColorBrewer)
+library(classInt)
+setwd("~/Desktop/mynacard")
+shape <- st_read("h27ka27.shp")
+plot(shape[2:1914,36])
+data1 <- read_csv("data1130.csv", locale=locale(encoding="SJIS"))
+names(data1)
+data1 <- read_csv("data1130.csv", locale=locale(encoding="SJIS"))
+names(data1)
+names(shape)
+shape$MOJI[:1900]
+shape$MOJI
+shape$MOJI[2]
+shape$MOJI[2:10]
+shape$MOJI[1900:1914]
+shape$MOJI[1915]
+names(shape)
+shape$SITYO_NAME[1915]
+shape$SITYO_NAME[1914]
+shape$N_CITY[1914]
+shape$CITY_NAME[1914]
+shape$CITY_NAME[1915]
+shape$CITY[1915]
+names(data1)
+data2 <- data1 %>% filter(data1$取得率_1130)
+data2 <- data1$取得率_1130
+data2
+data1
+data <- left_join(shape, data1, by=c("MOJI"="町丁目名"))
+data
+unmatch <- anti_join(shape, data1, by=c("MOJI"="町丁目名"))
+unmatch
+unmatch[2:1914]
+len(unmatch)
+length(unmatch)
+unmatch$MOJI
+unmatch <- anti_join(shape[1:1914], data1, by=c("MOJI"="町丁目名"))
+shape
+shape[2:1914]
+shape[1914]
+names(shape)
+shape[2:1914,]
+shape <- shape[2:1914,]
+shape
+unmatch <- anti_join(shape, data1, by=c("MOJI"="町丁目名"))
+unmatch
+unmatch$MOJI
+unmatch2 <- anti_join(data1, shape, by=c("MOJI"="町丁目名"))
+unmatch2 <- anti_join(data1, shape, by=c("町丁目名"="MOJI"))
+unmatch2$町丁目名
+unmatch$MOJI
+plota(shape)
+plot(shape)
+plot(shape[,36])
+plot(shape)
+shape
+plot(shape)
+shape <- st_read("h27ka27.shp")
+plot(shape[2:1914,36])
+names(shape)
+shape$MOJI
+data1 <- read_csv("data1130.csv", locale=locale(encoding="SJIS"))
+shape <- shape[2:1914,]
+plot(shape)
+shape[,4]
+plot(shape[,4])
+shape
+plot(shape)
+plot(shape[,36])
+unmatch2 <- anti_join(data1, shape, by=c("町丁目名"="MOJI"))
+unmatch2$町丁目名
+data <- left_join(shape, data1, by=c("MOJI"="町丁目名"))
+names(data)
+plot(shape[,42])
+plot(data[,42])
+range(data[["取得率_1130"]])
+range(data[,42])
+data[,42]
+data1 <- read_csv("data1130.csv", locale=locale(encoding="SJIS"))
+unmatch2 <- anti_join(data1, shape, by=c("町丁目名"="MOJI"))#
+unmatch2$町丁目名
+data <- left_join(shape, data1, by=c("MOJI"="町丁目名"))
+par(family="HiraKakuProN-W3")
+column <- "取得率_1130"
+range(data[[column]])
+summary(data[[column]])
+plot(data[[column]])
+plot(data)
+plot(data[,42])
+plot(data[,40])
+data1 <- read_csv("data1130.csv", locale=locale(encoding="SJIS"))
+data <- left_join(shape, data1, by=c("MOJI"="町丁目名"))
+plot(data[,40])
+data1 <- read_csv("data1130.csv", locale=locale(encoding="SJIS"))
+data <- left_join(shape, data1, by=c("MOJI"="町丁目名"))
+col_km <- data[[column]] %>% classIntervals(., 6, style="kmeans") %>% findColours(.,pal=brewer.pal(6,"Greens"))
+summary(data[[column]])
+plot(st_geometry(shape[7]), col=col_km, main=paste("カード取得率", column, "  (令和4年11月末現在)", sep=""))
+plot(st_geometry(shape[7]), col=col_km, main=paste("カード取得率", column, "  (令和4年11月末現在)", sep=""))
+par(family="HiraKakuProN-W3") #
+plot(st_geometry(shape[7]), col=col_km, main=paste("カード取得率", column, "  (令和4年11月末現在)", sep=""))
+par(family="HiraKakuProN-W3")
+plot(st_geometry(shape[7]), col=col_km, main=paste("カード取得率", column, "  (令和4年11月末現在)", sep=""))
+plot(st_geometry(shape[7]), col=col_km, main=paste("カード取得率", column, "  (令和4年11月末現在)", sep=""))
+plot(st_geometry(shape[7]), col=col_km, main=paste("カード取得率", column, "  (令和4年11月末現在)", sep=""))
+col_km <- data[[column]] %>% classIntervals(., 9, style="kmeans") %>% findColours(.,pal=brewer.pal(9,"YlGn"))
+plot(st_geometry(shape[7]), col=col_km, main=paste("カード取得率", column, "  (令和4年11月末現在)", sep=""))
+col_km <- data[[column]] %>% classIntervals(., 11, style="kmeans") %>% findColours(.,pal=brewer.pal(11,"RdYlGn"))
+plot(st_geometry(shape[7]), col=col_km, main=paste("カード取得率", column, "  (令和4年11月末現在)", sep=""))
+{ par(family="HiraKakuProN-W3") #
+plot(st_geometry(shape[7]), col=col_km, main=paste("カード取得率", column, "  (令和4年11月末現在)", sep=""))}
+par(family="HiraKakuProN-W3") + #
+plot(st_geometry(shape[7]), col=col_km, main="カード取得率 (令和4年11月末現在)")
+{#
+  par(family="HiraKakuProN-W3")#
+  plot(st_geometry(shape[7]), col=col_km, main="カード取得率 (令和4年11月末現在)")#
+}
+plot(st_geometry(shape[7]), col=col_km, main="カード取得率 (令和4年11月末現在)")
+par(family="HiraKakuProN-W3")#
+  plot(st_geometry(shape[7]), col=col_km, main="カード取得率 (令和4年11月末現在)")
+{par(family="HiraKakuProN-W3")#
+  plot(st_geometry(shape[7]), col=col_km, main="カード取得率 (令和4年11月末現在)")}
+{par(family="HiraKakuProN-W3")#
+  plot(st_geometry(shape[7]), col=col_km, main="カード取得率 (令和4年11月末現在)")}
+{#
+  par(family="HiraKakuProN-W3") +#
+  plot(st_geometry(shape[7]), col=col_km, main="カード取得率 (令和4年11月末現在)")#
+}
+{#
+  par(family="HiraKakuProN-W3") + plot(st_geometry(shape[7]), col=col_km, main="カード取得率 (令和4年11月末現在)")#
+}
+{#
+  par(family="HiraKakuProN-W3")#
+  plot(st_geometry(shape[7]), col=col_km, main="カード取得率 (令和4年11月末現在)")#
+}
+{#
+  par(family="HiraKakuProN-W3")#
+  plot(st_geometry(shape[7]), col=col_km, main="カード取得率 (令和4年11月末現在)")#
+}
+{par(family="HiraKakuProN-W3")#
+  plot(st_geometry(shape[7]), col=col_km, main="カード取得率 (令和4年11月末現在)")}
+{par(family="HiraKakuProN-W3")#
+  plot(st_geometry(shape[7]), col=col_km, main="カード取得率 (令和4年11月末現在)")}
+par(family="HiraKakuProN-W3")#
+  plot(st_geometry(shape[7]), col=col_km, main="カード取得率 (令和4年11月末現在)")
+plot(st_geometry(shape[7]), col=col_km, main="カード取得率 (令和4年11月末現在)")
+plot(st_geometry(shape[7]), col=col_km, main="カード取得率 (令和4年11月末現在)")
+col_km <- data[[column]] %>% classIntervals(., 11, style="hclust") %>% findColours(.,pal=brewer.pal(11,"RdYlGn"))
+plot(st_geometry(shape[7]), col=col_km, main="カード取得率 (令和4年11月末現在)")
+legend("topleft", fill=attr(col_km, "palette"), legend=names(attr(col_km,"table")),bty="n")
+col_pal <- data[[column]] %>% classIntervals(., 11, style="equal") %>% findColours(.,pal=brewer.pal(11,"RdYlGn"))
+plot(st_geometry(shape[7]), col=col_pal, main="カード取得率 (令和4年11月末現在)")
+col_pal <- data[[column]] %>% classIntervals(., 11, style="sd") %>% findColours(.,pal=brewer.pal(11,"RdYlGn"))
+plot(st_geometry(shape[7]), col=col_pal, main="カード取得率 (令和4年11月末現在)")
+col_pal <- data[[column]] %>% classIntervals(., 11, style="kmeans") %>% findColours(.,pal=brewer.pal(11,"RdYlGn"))
+plot(st_geometry(shape[7]), col=col_pal, main="カード取得率 (令和4年11月末現在)")
+legend("topleft", fill=attr(col_pal, "palette"), legend=names(attr(col_pal,"table")),bty="n")
+par(family="HiraKakuProN-W3")
+plot(st_geometry(shape[7]), col=col_pal, main="カード取得率 (令和4年11月末現在)")
+{par(family="HiraKakuProN-W3")#
+  plot(st_geometry(shape[7]), col=col_pal, main="カード取得率 (令和4年11月末現在)")#
+  #自動計算した色の区分け表示#
+  legend("topleft", fill=attr(col_pal, "palette"), legend=names(attr(col_pal,"table")),bty="n")#
+}
+plot(st_geometry(shape[7]), col=col_pal, main="カード取得率 (令和4年11月末現在)")
+{par(family="HiraKakuProN-W3")#
+  plot(st_geometry(shape[7]), col=col_pal, main="カード取得率 (令和4年11月末現在)")#
+  #自動計算した色の区分け表示#
+  legend("topleft", fill=attr(col_pal, "palette"), legend=names(attr(col_pal,"table")),bty="n")}
+col_pal <- data[[column]] %>% classIntervals(., 11, style="quantile") %>% findColours(.,pal=brewer.pal(11,"RdYlGn"))
+plot(st_geometry(shape[7]), col=col_pal, main="カード取得率 (令和4年11月末現在)")#
+  #自動計算した色の区分け表示
+legend("topleft", fill=attr(col_pal, "palette"), legend=names(attr(col_pal,"table")),bty="n")
+col_pal <- data[[column]] %>% classIntervals(., 11, style="equal") %>% findColours(.,pal=brewer.pal(11,"RdYlGn"))
+plot(st_geometry(shape[7]), col=col_pal, main="カード取得率 (令和4年11月末現在)")
+legend("topleft", fill=attr(col_pal, "palette"), legend=names(attr(col_pal,"table")),bty="n")
+col_pal <- data[[column]] %>% classIntervals(., 10, style="equal") %>% findColours(.,pal=brewer.pal(10,"RdYlGn"))
+legend("topleft", fill=attr(col_pal, "palette"), legend=names(attr(col_pal,"table")),bty="n")#
+}
+plot(st_geometry(shape[7]), col=col_pal, main="カード取得率 (令和4年11月末現在)")
+legend("topleft", fill=attr(col_pal, "palette"), legend=names(attr(col_pal,"table")),bty="n")
+column <- "取得者数" #ここを取得者数、増減とカラム名に変更していく　数字は「全角」に注意!#
+col_pal <- data[[column]] %>% classIntervals(., 10, style="equal") %>% findColours(.,pal=brewer.pal(10,"RdYlGn"))  #
+plot(st_geometry(shape[7]), col=col_pal, main="カード取得率 (令和4年11月末現在)")#
+legend("topleft", fill=attr(col_pal, "palette"), legend=names(attr(col_pal,"table")),bty="n")
+column <- "取得者数" #ここを取得者数、増減とカラム名に変更していく　数字は「全角」に注意!#
+col_pal <- data[[column]] %>% classIntervals(., 10, style="kmeans") %>% findColours(.,pal=brewer.pal(10,"RdYlGn"))  #
+plot(st_geometry(shape[7]), col=col_pal, main="カード取得率 (令和4年11月末現在)")#
+legend("topleft", fill=attr(col_pal, "palette"), legend=names(attr(col_pal,"table")),bty="n")
+column <- "取得者数" #ここを取得者数、増減とカラム名に変更していく　数字は「全角」に注意!#
+col_pal <- data[[column]] %>% classIntervals(., 10, style="sd") %>% findColours(.,pal=brewer.pal(10,"RdYlGn"))  #
+plot(st_geometry(shape[7]), col=col_pal, main="カード取得率 (令和4年11月末現在)")#
+legend("topleft", fill=attr(col_pal, "palette"), legend=names(attr(col_pal,"table")),bty="n")
+column <- "取得者数" #ここを取得者数、増減とカラム名に変更していく　数字は「全角」に注意!#
+col_pal <- data[[column]] %>% classIntervals(., 10, style="fisher") %>% findColours(.,pal=brewer.pal(10,"RdYlGn"))  #
+plot(st_geometry(shape[7]), col=col_pal, main="カード取得率 (令和4年11月末現在)")#
+legend("topleft", fill=attr(col_pal, "palette"), legend=names(attr(col_pal,"table")),bty="n")
+column <- "取得者数" #ここを取得者数、増減とカラム名に変更していく　数字は「全角」に注意!#
+col_pal <- data[[column]] %>% classIntervals(., 10, style="pretty") %>% findColours(.,pal=brewer.pal(10,"RdYlGn"))  #
+plot(st_geometry(shape[7]), col=col_pal, main="カード取得率 (令和4年11月末現在)")#
+legend("topleft", fill=attr(col_pal, "palette"), legend=names(attr(col_pal,"table")),bty="n")
+column <- "取得者数" #ここを取得者数、増減とカラム名に変更していく　数字は「全角」に注意!#
+col_pal <- data[[column]] %>% classIntervals(., 10, style="hclust") %>% findColours(.,pal=brewer.pal(10,"RdYlGn"))  #
+plot(st_geometry(shape[7]), col=col_pal, main="カード取得率 (令和4年11月末現在)")#
+legend("topleft", fill=attr(col_pal, "palette"), legend=names(attr(col_pal,"table")),bty="n")
+column <- "取得者数" #ここを取得者数、増減とカラム名に変更していく　数字は「全角」に注意!#
+col_pal <- data[[column]] %>% classIntervals(., 10, style="kmeans") %>% findColours(.,pal=brewer.pal(10,"RdYlGn"))  #
+plot(st_geometry(shape[7]), col=col_pal, main="カード取得率 (令和4年11月末現在)")#
+legend("topleft", fill=attr(col_pal, "palette"), legend=names(attr(col_pal,"table")),bty="n")
+column <- "取得者数" #ここを取得者数、増減とカラム名に変更していく　数字は「全角」に注意!#
+col_pal <- data[[column]] %>% classIntervals(., 10, style="kmeans") %>% findColours(.,pal=brewer.pal(10,"YlGn"))  #
+plot(st_geometry(shape[7]), col=col_pal, main="カード取得率 (令和4年11月末現在)")#
+legend("topleft", fill=attr(col_pal, "palette"), legend=names(attr(col_pal,"table")),bty="n")
+column <- "取得者数" #ここを取得者数、増減とカラム名に変更していく　数字は「全角」に注意!#
+col_pal <- data[[column]] %>% classIntervals(., 10, style="kmeans") %>% findColours(.,pal=brewer.pal(10,"GnBu"))  #
+plot(st_geometry(shape[7]), col=col_pal, main="カード取得率 (令和4年11月末現在)")#
+legend("topleft", fill=attr(col_pal, "palette"), legend=names(attr(col_pal,"table")),bty="n")
